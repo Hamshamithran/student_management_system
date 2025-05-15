@@ -1,0 +1,241 @@
+<?php
+
+session_start();
+   
+    if(!isset($_SESSION['username']))
+    { 
+       header("location:login.php");
+    }
+
+    elseif($_SESSION['usertype']=='student')
+    {
+
+    header("location:login.php");
+    }
+
+    $host="localhost";
+    $user="root";
+    $password="";
+    $db="student management system project";
+
+    $data=mysqli_connect($host,$user,$password,$db);
+
+    if(isset($_POST['add_student']))
+    {
+       $username=$_POST['name'];
+       $user_email=$_POST['email'];
+       $user_phone=$_POST['phone'];
+       $user_password=$_POST['password'];
+       $user_DoB=$_POST['DoB'];
+       $user_course=$_POST['course'];
+       $user_register=$_POST['register'];
+       $user_father=$_POST['father'];
+       $user_mother=$_POST['mother'];
+       $user_bloodgroup=$_POST['bloodgroup'];
+       $user_adhar=$_POST['adhar'];
+       $user_Gender=$_POST['Gender'];
+       $user_year=$_POST['year'];
+       $user_Address=$_POST['Address'];
+       $file=$_FILES['image']['name'];
+
+       $dst="./image/".$file;
+ 
+       $dst_db="image/".$file;
+ 
+       move_uploaded_file($_FILES['image']['tmp_name'],$dst );
+       $usertype="student";
+
+
+       $check = "SELECT * FROM user WHERE username = '$username'";
+
+       $check_user=mysqli_query($data,$check);
+
+       $row_count=mysqli_num_rows($check_user);
+
+       if($row_count==1)
+       {
+
+        echo "<script type='text/javascript'>
+        alert('Username Already Exist. Try Another One');
+        
+        </script";
+       }
+       else
+       {
+
+       
+
+       $sql="INSERT INTO user(username,register,Dob,Gender,course,year,father,mother,bloodgroup,adhar,Address,email,phone,usertype,image,password) VALUES ('$username','$user_register','$user_DoB','$user_Gender','$user_course','$user_year','$user_father','$user_mother','$user_bloodgroup','$user_adhar','$user_Address','$user_email','$user_phone','$usertype','$dst_db','user_password')";
+
+       $result=mysqli_query($data,$sql);  
+        
+        if($result)
+        {
+            echo "<script type='text/javascript'>
+            alert('Data upload sucess');
+            
+            </script";
+        }
+
+        else
+        {
+            echo "Uploaded Failed";
+        }
+    }
+
+    }
+
+
+?> 
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Admin Dashboard</title>
+
+        <style type="text/css">
+        label 
+        {
+            display: inline-block;
+            text-align: right;
+            width: 100px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        } 
+
+        .div_deg
+        {
+            background-color: skyblue;
+            width: 400px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+
+        }
+     
+     </style>
+
+        <?php
+    
+    include 'admin_css.php';
+    ?>
+</head>
+<body>
+
+<?php
+
+include 'admin_sidebar.php';
+
+?>
+
+  
+    <div class="content">
+        <center>
+       <h1> 
+        Add Student
+       </h1>
+       <div class="div_deg">
+
+       <form action="#" method="POST" enctype="multipart/form-data">
+
+       <div>
+        <label>Username</label>
+        <input type="type" name="name">
+       </div>
+
+       <div>
+        <label>Dob</label>
+        <input type="type" name="DoB">
+       </div>
+
+       
+       <div>
+        <label>course</label>
+        <input type="type" name="course">
+       </div>
+
+
+       <div>
+        <label>year</label>
+        <input type="type" name="year">
+       </div>
+
+
+       <div>
+        <label>Gender</label>
+        <input type="type" name="Gender">
+       </div>
+
+
+       <div>
+        <label>mother</label>
+        <input type="type" name="mother">
+       </div>
+
+       <div>
+        <label>father</label>
+        <input type="type" name="father">
+       </div>
+
+
+
+       <div>
+        <label>Address</label>
+        <input type="type" name="Address">
+       </div>
+
+
+        <div>
+        <label>register</label>
+        <input type="type" name="register">
+       </div>
+
+       
+
+       <div>
+        <label>bloodgroup</label>
+        <input type="type" name="bloodgroup">
+       </div>
+
+
+       <div>
+        <label>adhar</label>
+        <input type="type" name="adhar">
+       </div>
+
+       <div>
+       <label>email</label>
+        <input type="email" name="email">
+       </div>
+
+
+        <div>
+        <label>Phone</label>
+        <input type="number" name="phone">
+       </div>
+
+       <div>
+         <label>Image :</label>
+         <input type="file" name="image">
+       </div>
+
+
+        <div>
+        <label>Password</label>
+        <input type="text" name="password">
+       </div>
+
+       
+       <div>
+        <input type="submit" class="btn btn-primary" name="add_student" value="Add Student">
+       </div>
+
+
+       </form>
+       </div>
+    </center>
+    </div>
+
+</body>
+</html> 

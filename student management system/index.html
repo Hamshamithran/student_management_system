@@ -1,0 +1,133 @@
+<!-- 
+<?php
+    error_reporting(0);
+    session_start();
+    session_destroy();
+
+    if($_SESSION['message'])
+    {
+        $message=$_SESSION['message'];
+
+        echo "<script type='text/javascript'>
+
+        alert('$message');
+
+        </script>";
+    }
+?> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>student management system</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>  
+    <nav>
+        <label class="logo">Government Arts And Science College</label>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="contact.html">contact</a></li>
+            <li><a href="Admission_page.html">Admission</a></li>
+            <li><a href="login.html" class="btn btn-sucess">LOGIN</a></li>
+            
+        </ul>
+    </nav> 
+    
+    <!-- Home Section Starts -->
+     <div class="section1">
+        
+        <img src="./vedi/IMG-20250403-WA0018.jpg" alt="">
+     </div>
+    <div class="container">
+
+      <div class="row">
+
+         <div class="col-md-4">
+            <img class="welcome" src="e.png">
+    </div>
+
+    <div class="col-md-8">
+        <h1>About</h1>
+        <p>  Periyar University College of Arts and Science, Idappadi was started by Government of Tamil Nadu by GO (Perm) No: 81, dated on 29-05-2012. It is a constituent college of Periyar University and affiliated on 11-08-2012. Idappadi Taluk is educationally most backward area. So, the Government put forth the step to develop this area in Education.
+        The College is surrounded with 12.03 acres of land and has 4609 sqmts. of RCC building in Thangayur panchayat and it is running in its own premises. It is the nearer village to Idappadi. The College is situated 5kms from Idappadi in the highway of Sankari.
+
+        The College started its academic career from 2012 with five Under Graduate courses. They are B.A.English., B.Com., B.B.A., B.Sc.,Mathematics and B.Sc.,Computer Science. In 2016, two Under Graduate courses and two Post Graduate courses were started. They are B.A Tamil, B.Sc Physics, M.Com., and M.Sc., Mathematics. Now, 1113 Students are studying in the above courses.
+
+ </p>
+    </div>
+
+    <center>
+        <h1 class="adm">Admission Form</h1>
+    </center>  
+    
+    <div align="center" class="admission_form">
+
+          <form action="data_check.php" method="POST">
+
+            <div class="adm_int> 
+                <label class="label_text">Name</label>
+                <input class="input_deg" type="text" name="name">
+            </div> 
+            
+            <div class="adm_int> 
+                <label  class="label_text">Email</label>
+                <input class="input_deg" type="text" name="e
+                <?php
+                    error_reporting(0);
+                    session_start();
+                    session_destroy();
+                
+                    if($_SESSION['message'])
+                    {
+                        $message=$_SESSION['message'];
+                
+                        echo "<script type='text/javascript'>
+                
+                        alert('$message');
+                
+                        </script>";
+                    }
+                ?> -->
+                mail">
+            </div>
+
+            <div class="adm_int> 
+                <label class="label_text">Phone</label>
+                <input class="input_deg" type="text" name="phone">
+            </div>
+
+            <div class="adm_int> 
+                <label class="label_text">Message</label>
+                <textarea class="input_txt" name="message"></textarea>
+            </div>
+
+            <div class="adm_int" > 
+                
+                <input class="btn btn-primary"id="submit" type="submit" value="apply" name="apply">
+            </div>
+          </form>
+    
+    
+    </div>
+
+    <footer>
+        <h3 class="footer">All @copyright reserved by Asmithavadivel &#10084</h3>
+
+</footer>   
+</body>
+</html>
+
+
+
